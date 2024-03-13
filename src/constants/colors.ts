@@ -1,0 +1,16 @@
+export const colors = {
+  black: '#212121',
+  white: '#ffffff',
+  primaryButtonColor: '#633F09',
+  primaryButtonTextColor: '#5A5858',
+  buttonColor: '#F3A01C',
+  primaryTextColor: '#1A2B59',
+  secondaryColor: '#1A2B59',
+  idleColor: '#707070',
+  textInputBackgroundColor: '#E1E9FF',
+  secondaryColorWithOpacity: (opacity: string) => `#1A2B59${opacity}`,
+  tertiaryColor: '#2848F2',
+  secondaryColor2WithOpacity: (opacity: string) => `#2848F2${opacity}`,
+  black2: '#181818',
+  secondaryColor3: '#F2F6FE',
+};
