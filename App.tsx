@@ -3,6 +3,8 @@ import { StyleSheet, Text, View } from 'react-native';
 import { useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import BottomTabNavigation from './src/routes/BottomTabNavigation';
+import Splashscreen from './src/screen/Splashscreen';
+import NavigationStack from './src/routes/NavigationStack';
 import {
   useSafeAreaInsets,
   SafeAreaView,
@@ -21,8 +23,8 @@ export default function App() {
   return (
     <SafeAreaView style={{ ...styles.container }}>
       <NavigationContainer>
-        <StatusBar />
-        <BottomTabNavigation />
+        <StatusBar style="dark" />
+        <NavigationStack />
       </NavigationContainer>
     </SafeAreaView>
   );

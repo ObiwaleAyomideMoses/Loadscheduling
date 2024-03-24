@@ -10,8 +10,15 @@ import Home from '../screen/Home';
 import Report from '../screen/Report';
 import Smart from '../screen/Smart';
 import { size } from '../config/size';
+import HomeBlur from '../../assets/svg/HomeBlur';
+import SmartFocused from '../../assets/svg/SmartFocused';
 import { colors } from '../constants/colors';
-// Define the BottomTabNavigationProp type
+import HomeFocused from '../../assets/svg/HomeFocused';
+import ScheduleIcon from '../../assets/svg/ScheduleIcon';
+import DetailsIcon from '../../assets/svg/Details';
+import ReportIcon from '../../assets/svg/ReportIcon';
+import DetailsFocused from '../../assets/svg/DetailsFocused';
+import ReportFocused from '../../assets/svg/ReportFocused';
 const Tab = createBottomTabNavigator();
 
 type RootStackParamList = {
@@ -36,7 +43,6 @@ const BottomTabNavigation = () => {
       style={{
         flex: 1,
         backgroundColor: colors.white,
-   
 
         overflow: 'hidden',
       }}
@@ -73,75 +79,76 @@ const BottomTabNavigation = () => {
             }
 
             return (
-              <Text style={{ color: focused ? 'blue' : 'black' }}>{label}</Text>
+              <Text style={{ color: focused ? colors.blue : colors.black }}>
+                {label}
+              </Text>
             );
           },
 
           tabBarIcon: ({ focused }) => {
             let image: ReactNode;
             let routeName = route.name;
-            //   if (routeName === home) {
-            //     image =
-            //       focused === true ? (
-            //         <HomeFocusIcon size={size.getHeightSize(24)} />
-            //       ) : (
-            //         <HomeIcon size={size.getHeightSize(24)} />
-            //       );
-            //   }
+            if (routeName === home) {
+              image =
+                focused === true ? (
+                  <HomeFocused size={size.getHeightSize(24)} />
+                ) : (
+                  <HomeBlur size={size.getHeightSize(24)} />
+                );
+            }
 
-            //   if (routeName === loan) {
-            //     image =
-            //       focused === true ? (
-            //         <LoanFocusIcon size={size.getHeightSize(24)} />
-            //       ) : (
-            //         <LoanIcon size={size.getHeightSize(24)} />
-            //       );
-            //   }
-            //   if (routeName === card) {
-            //     image =
-            //       focused === true ? (
-            //         <CardFocusIcon
-            //           width={size.getWidthSize(24)}
-            //           height={size.getHeightSize(18.46)}
-            //         />
-            //       ) : (
-            //         <CardsIcon
-            //           width={size.getWidthSize(24)}
-            //           height={size.getHeightSize(18.46)}
-            //         />
-            //       );
-            //   }
-            //   if (routeName === account) {
-            //     image =
-            //       focused === true ? (
-            //         <AccountIcon size={size.getHeightSize(24)} />
-            //       ) : (
-            //         <AccountIcon size={size.getHeightSize(24)} />
-            //       );
-            //   }
+            if (routeName === smart) {
+              image =
+                focused === true ? (
+                  <SmartFocused size={size.getHeightSize(24)} />
+                ) : (
+                  <ScheduleIcon size={size.getHeightSize(24)} />
+                );
+            }
+            if (routeName === report) {
+              image =
+                focused === true ? (
+                  <ReportFocused size={size.getHeightSize(24)} />
+                ) : (
+                  <ReportIcon size={size.getHeightSize(24)} />
+                );
+            }
+            if (routeName === details) {
+              image =
+                focused === true ? (
+                  <DetailsFocused
+                    width={size.getWidthSize(24)}
+                    height={size.getHeightSize(18.46)}
+                  />
+                ) : (
+                  <DetailsIcon
+                    width={size.getWidthSize(24)}
+                    height={size.getHeightSize(18.46)}
+                  />
+                );
+            }
             return image;
           },
         })}
       >
         <Tab.Screen
-          name={details}
-          component={Details}
-          options={{ headerShown: false }}
-        />
-        <Tab.Screen
           name={home}
           component={Home}
           options={{ headerShown: false }}
         />
-
+        <Tab.Screen
+          name={smart}
+          component={Smart}
+          options={{ headerShown: false }}
+        />
         <Tab.Screen
           name={report}
           component={Report}
           options={{ headerShown: false }}
         />
         <Tab.Screen
-          name={smart}
-          component={Smart}
+          name={details}
+          component={Details}
           options={{ headerShown: false }}
         />
       </Tab.Navigator>
